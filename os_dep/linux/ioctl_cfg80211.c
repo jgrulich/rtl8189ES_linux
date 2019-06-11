@@ -3617,6 +3617,8 @@ void rtw_cfg80211_indicate_sta_assoc(_adapter *padapter, u8 *pmgmt_frame, uint f
 			ie_offset = _REASOCREQ_IE_OFFSET_;
 	
 		sinfo.filled = 0;
+// fix AP crash on 4.20 #24, commit d33cc8c83f21a21f990c0238c3ddafd303b26a02
+		sinfo.pertid = 0;
 // cf commit 319090bf6c75e3ad42a8c
 //		sinfo.filled = STATION_INFO_ASSOC_REQ_IES;
 		sinfo.assoc_req_ies = pmgmt_frame + WLAN_HDR_A3_LEN + ie_offset;
